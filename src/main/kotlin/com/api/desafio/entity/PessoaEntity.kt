@@ -23,5 +23,4 @@ data class PessoaEntity(
     val stack : List<String> = mutableListOf()
 
 )
-{
-}
+fun PessoaEntity.toDTO() = PessoaDTO(idPessoa = id, dataNascimento = dataNascimento, apelido = apelido, nome = nome, stack =  stack)

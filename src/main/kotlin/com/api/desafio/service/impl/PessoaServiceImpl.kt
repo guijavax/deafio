@@ -1,6 +1,7 @@
 package com.api.desafio.service.impl
 
 import com.api.desafio.entity.PessoaEntity
+import com.api.desafio.entity.toDTO
 import com.api.desafio.exception.SQLException
 import com.api.desafio.model.PessoaDTO
 import com.api.desafio.model.toEntity
@@ -25,6 +26,11 @@ class PessoaServiceImpl : PessoaService {
             return pessoaRepository.save(pessoaEntity).id
         }
         throw SQLException("Pessoa já existe!")
+    }
+
+   override fun findById(idPessoa : UUID) : PessoaDTO? {
+        val pessoa = pessoaRepository.findById(idPessoa)
+       return if (pessoa.isPresent) pessoa.get().toDTO() else null
     }
 
 }

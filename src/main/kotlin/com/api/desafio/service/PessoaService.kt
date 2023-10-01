@@ -7,4 +7,6 @@ import java.util.UUID
 interface PessoaService {
 
     fun savePessoa(pessoaDTO: PessoaDTO) : UUID?
+
+    fun findById(idPessoa : UUID) : PessoaDTO?
 }
